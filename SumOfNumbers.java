@@ -1,14 +1,27 @@
-public class SumOfNumbers {
+import java.util.ArrayList;
 
-    public static int sum(int number1, int number2, int number3, int number4) {
-        // write your code here
-        
-        int answer = number1+number2+number3+number4;
-        return answer;
+public class SumOfNumbers {
+    public static int sum(ArrayList<Integer> list) {
+        // Write your code here
+        int sum = 0;
+        for(Integer num:list){
+            sum += num;
+        }
+        return sum;
     }
 
     public static void main(String[] args) {
-        int answer = sum(4, 3, 6, 1);
-        System.out.println("Sum: " + answer);
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(3);
+        list.add(2);
+        list.add(7);
+        list.add(2);
+        
+        System.out.println("The sum: " + sum(list));
+
+        list.add(10);
+        
+        System.out.println("The sum: " + sum(list));
     }
+
 }
