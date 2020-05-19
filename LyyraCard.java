@@ -1,45 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author devin
- */
 public class LyyraCard {
+
     private double balance;
-    
-    public LyyraCard(double balanceAtStart){
-        this.balance = balanceAtStart;
-    }
-    
-    public String toString(){
-        return "The card has " +this.balance+" euros";
+
+    public LyyraCard(double balance) {
+        this.balance = balance;
     }
 
-    public void payEconomical() {
-        if (balance >= 2.5) {
-            balance -= 2.5;
-        }
+    public double balance() {
+        return this.balance;
     }
-    
-    public void payGourmet() {
-        if (balance >= 4) {
-            balance -= 4
-;        }
+
+    public void loadMoney(double amount) {
+        this.balance += amount;
     }
-    
-    public void loadMoney(double amount){
-        if (amount > 0) {
-            if (balance + amount > 150) {
-                balance = 150;
-            } else {
-                balance += amount;
-            }
-        }
+
+    public boolean pay(double amount) {
+       // method checks if the balance of the card is at least amount given as parameter
+       // if not, methods returns false meaning that the card could not be used for the payment
+       // if the balance is enough, the given amount is taken from the balance and true is returned
+       if(balance >= amount){
+           balance -= amount;
+           return true;
+       }
+        return false;
     }
-    
-    
 }
