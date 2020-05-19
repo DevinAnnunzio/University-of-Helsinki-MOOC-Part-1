@@ -1,13 +1,11 @@
-
 public class MyDate {
-
     private int day;
     private int month;
     private int year;
 
-    public MyDate(int day, int month, int year) {
+    public MyDate(int day, int montd, int year) {
         this.day = day;
-        this.month = month;
+        this.month = montd;
         this.year = year;
     }
 
@@ -24,40 +22,25 @@ public class MyDate {
             return true;
         }
 
-        if (this.year == compared.year && this.month == compared.month
-                && this.day < compared.day) {
+        if (this.year == compared.year && this.month == compared.month &&
+            this.day < compared.day) {
             return true;
         }
 
         return false;
     }
-    //advances the days limited by having 30 day calendar
-    public void advance(){
-        day++;
-        if(day>30){
-            day = 1;
-            month++;
-            if(month>12){
-                month = 1;
-                year++;
-            }
-        }
-    }
-    //advances the date by given amount
-    public void advance(int numberOfDays){
-        int i = 0;
-        while(i<numberOfDays){
-            advance();
-            i++;
-        }
-        
-    }
-    //Copies date object, advances it by given days, and returns new object
-    public MyDate afterNumberOfDays(int days){
-        MyDate updatedDate = new MyDate(this.day,this.month,this.year);
-        updatedDate.advance(days);
-        
-        return updatedDate;
-    }
 
+    public int differenceInYears(MyDate comparedDate) {
+        double yearDiff = 0.00;
+        if (this.year > comparedDate.year) {
+            yearDiff = (this.year + (double) this.month / 12 + (double) this.day / 365) -
+                (comparedDate.year + (double) comparedDate.month / 12 +
+                    (double) comparedDate.day / 365);
+        } else {
+            yearDiff = (comparedDate.year + (double) comparedDate.month / 12 +
+                    (double) comparedDate.day / 365) -
+                (this.year + (double) this.month / 12 + (double) this.day / 365);
+        }
+        return (int) yearDiff;
+    }
 }
